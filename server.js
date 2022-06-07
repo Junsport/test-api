@@ -24,6 +24,13 @@ const PORT = 8000
         'Base': 'Maranello, Province of Modena, Italy',
         'Team Principal': 'Laurent Mekies'
     },
+    'red bull':{
+        'Full name': 'Oracle Red Bull Racing',
+        'Driver 1': 'Max Verstappen',
+        'Driver 2': ' Sergio Pérez',
+        'Base': 'Milton Keynes, England, UK',
+        'Team Principal': 'Christian Horner'
+    },
     'unknown':{
         'Full name': 'unknown',
         'Driver 1': 'unknown',
@@ -41,9 +48,12 @@ app.get('/api/:name', (request, response)=>{
         response.json(teams['unknown'])
     }
 })
+
 app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/index.html')
 })
-app.listen(PORT, (req, res)=>{   //specifies the server port to listen to
+
+app.listen(process.env.PORT || PORT, (req, res)=>{   //specifies the server port to listen to
     console.log(`Server is running on ${PORT}`)
 })
+
